@@ -47,7 +47,7 @@ const Header = () => {
         <div className="flex items-center justify-between h-20">
           <Link to="/" className="flex items-center space-x-3">
             <img 
-              src="/logo.png" 
+              src="/underdog-logo.png" 
               alt="Underdog Logo" 
               className="w-12 h-12 object-contain"
             />

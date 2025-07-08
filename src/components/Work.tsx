@@ -99,16 +99,8 @@ const CoreBeliefs = () => {
         <div className="relative mb-16">
           <div className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 rounded-3xl overflow-hidden">
             <div className="grid grid-cols-1 lg:grid-cols-2">
-              <div className="relative bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center p-12 overflow-hidden">
-                <div className="absolute inset-0">
-                  <img 
-                    src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=800" 
-                    alt="Our core beliefs in action"
-                    className="w-full h-full object-cover opacity-30"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-gray-800/80 to-gray-900/80"></div>
-                </div>
-                <div className="text-center">
+              <div className="relative bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center p-12">
+                <div className="text-center relative z-10">
                   <div className="text-white mb-6 flex justify-center">
                     {currentBelief.icon}
                   </div>

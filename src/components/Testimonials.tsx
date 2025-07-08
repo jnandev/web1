@@ -65,10 +65,10 @@ const Testimonials = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-6xl font-black text-white mb-6 tracking-tight">
-            SUCCESS STORIES
+            WHY CHOOSE US?
           </h2>
           <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            Real businesses, real results. See how we've transformed companies across every industry.
+            Discover what makes Underdog the perfect partner for your business transformation and growth.
           </p>
         </div>
 

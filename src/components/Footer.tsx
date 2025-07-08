@@ -22,7 +22,7 @@ const Footer = () => {
           <div className="md:col-span-2">
             <Link to="/" className="flex items-center space-x-3 mb-6">
               <img 
-                src="/logo.png" 
+                src="/underdog-logo.png" 
                 alt="Underdog Logo" 
                 className="w-12 h-12 object-contain"
               />
