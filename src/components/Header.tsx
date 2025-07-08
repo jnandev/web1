@@ -93,12 +93,6 @@ const Header = () => {
               </div>
             </div>
 
-            <Link
-              to="/beliefs/every-business-deserves-to-win"
-              className="text-white/80 hover:text-white transition-colors duration-300 text-sm font-medium tracking-wide uppercase"
-            >
-              Our Beliefs
-            </Link>
 
             <Link
               to="/pricing"

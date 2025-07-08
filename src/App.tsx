@@ -75,7 +75,7 @@ function App() {
             <Route path="/beliefs/authenticity-over-everything" element={<AuthenticityOverEverythingPage />} />
             <Route path="/beliefs/innovation-drives-growth" element={<InnovationDrivesGrowthPage />} />
             <Route path="/beliefs/community-over-competition" element={<CommunityOverCompetitionPage />} />
-            <Route path="/beliefs/results-speak-louder" element={<ResultsSpeakLouderPage />} />
+            <Route path="/beliefs/results-speak-louder-than-words" element={<ResultsSpeakLouderPage />} />
           </Routes>
         </div>
         <Footer />

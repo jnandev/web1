@@ -37,19 +37,10 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="text-gray-400 text-sm">Phone</p>
-                    <p className="text-white font-medium">+1 (555) 123-4567</p>
+                    <p className="text-white font-medium">+91 9632997512</p>
                   </div>
                 </div>
                 
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-gray-700/50 backdrop-blur-sm border border-gray-600 rounded-full flex items-center justify-center">
-                    <MapPin className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <p className="text-gray-400 text-sm">Location</p>
-                    <p className="text-white font-medium">New York, Los Angeles, London</p>
-                  </div>
-                </div>
               </div>
             </div>
 
