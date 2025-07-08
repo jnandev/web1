@@ -49,7 +49,7 @@ const services = [
 
 const Services = () => {
   return (
-    <section id="services" className="py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-black">
+    <section id="services" className="pt-32 pb-24 bg-gradient-to-br from-gray-900 via-gray-800 to-black">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-6xl font-black text-white mb-6 tracking-tight">

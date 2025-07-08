@@ -34,7 +34,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-black to-gray-800">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-black to-gray-800 pt-20 pb-16">
       {/* Animated Background */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1),transparent_50%)]"></div>
@@ -42,7 +42,7 @@ const Hero = () => {
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
-      <div ref={heroRef} className="relative z-10 text-center px-6 transition-transform duration-100 ease-out">
+      <div ref={heroRef} className="relative z-10 text-center px-6 transition-transform duration-100 ease-out max-w-7xl mx-auto">
         <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-white mb-6 tracking-tighter leading-none">
           <span className="block animate-slide-up">WE ARE</span>
           <span className="block animate-slide-up delay-200 bg-gradient-to-r from-white via-gray-300 to-white bg-clip-text text-transparent">
@@ -50,12 +50,14 @@ const Hero = () => {
           </span>
         </h1>
 
-        <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed animate-fade-in delay-500">
+        <div className="mb-12 animate-fade-in delay-500">
+          <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
           From <span className="text-white font-semibold">retail stores</span> to 
           <span className="text-white font-semibold"> e-commerce platforms</span> and 
           <span className="text-white font-semibold"> real estate ventures</span> - 
           we transform brands into market leaders
-        </p>
+          </p>
+        </div>
 
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-fade-in delay-700">
           <button 
@@ -75,7 +77,7 @@ const Hero = () => {
           </button>
         </div>
 
-        <div className={`mt-16 transition-all duration-1000 ${isVisible ? 'animate-fade-in opacity-100' : 'opacity-0'}`}>
+        <div className={`mt-20 transition-all duration-1000 ${isVisible ? 'animate-fade-in opacity-100' : 'opacity-0'}`}>
           <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto text-center">
             <div className="group cursor-pointer">
               <div className="text-3xl md:text-4xl font-black text-white mb-2 group-hover:scale-110 transition-transform duration-300">200+</div>
@@ -95,7 +97,7 @@ const Hero = () => {
 
       <button 
         onClick={() => scrollToSection('services')}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce hover:scale-110 transition-transform duration-300 p-2 rounded-full hover:bg-white/10"
+        className="absolute bottom-12 left-1/2 transform -translate-x-1/2 animate-bounce hover:scale-110 transition-transform duration-300 p-2 rounded-full hover:bg-white/10"
       >
         <ArrowDown className="text-white/60" size={32} />
       </button>
