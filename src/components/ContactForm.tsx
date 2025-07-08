@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { Send, CheckCircle, AlertCircle, Loader } from 'lucide-react';
 import { useContactForm } from '../hooks/useContactForm';
-import { ContactFormData } from '../api/contact';
+import { ContactFormData, checkBackendHealth } from '../api/contact';
 
 const ContactForm = () => {
   const { status, message, submit, reset } = useContactForm();
+  const [backendStatus, setBackendStatus] = useState<'checking' | 'online' | 'offline'>('checking');
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
@@ -12,6 +13,19 @@ const ContactForm = () => {
     businessType: '',
     message: ''
   });
+
+  // Check backend status on component mount
+  React.useEffect(() => {
+    const checkStatus = async () => {
+      try {
+        const health = await checkBackendHealth();
+        setBackendStatus(health.status === 'OK' ? 'online' : 'offline');
+      } catch (error) {
+        setBackendStatus('offline');
+      }
+    };
+    checkStatus();
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -51,6 +65,28 @@ const ContactForm = () => {
       <div className="mb-6">
         <h3 className="text-2xl font-bold text-white mb-2">Get Started Today</h3>
         <p className="text-gray-300">Tell us about your business and marketing goals</p>
+        
+        {/* Backend Status Indicator */}
+        <div className="mt-3 flex items-center text-sm">
+          {backendStatus === 'checking' && (
+            <>
+              <Loader className="w-4 h-4 mr-2 animate-spin text-yellow-400" />
+              <span className="text-yellow-400">Checking connection...</span>
+            </>
+          )}
+          {backendStatus === 'online' && (
+            <>
+              <div className="w-2 h-2 mr-2 bg-green-400 rounded-full animate-pulse"></div>
+              <span className="text-green-400">System online</span>
+            </>
+          )}
+          {backendStatus === 'offline' && (
+            <>
+              <div className="w-2 h-2 mr-2 bg-red-400 rounded-full"></div>
+              <span className="text-red-400">System offline - form will be logged</span>
+            </>
+          )}
+        </div>
       </div>
       
       <form onSubmit={handleSubmit} className="space-y-6">
@@ -176,6 +212,9 @@ const ContactForm = () => {
           </span>
           {status !== 'loading' && (
             <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+          )}
+          {status === 'loading' && (
+            <Loader className="w-5 h-5 animate-spin" />
           )}
         </button>
         

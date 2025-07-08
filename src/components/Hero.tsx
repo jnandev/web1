@@ -1,8 +1,13 @@
 import React, { useEffect, useRef } from 'react';
-import { ArrowDown, Play } from 'lucide-react';
+import { ArrowDown, Play, Zap } from 'lucide-react';
 
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -55,8 +60,10 @@ const Hero = () => {
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-fade-in delay-700">
           <button 
             onClick={() => scrollToSection('contact')}
-            className="group bg-white text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl flex items-center justify-center"
+            className="group bg-white text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl flex items-center justify-center relative overflow-hidden"
           >
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+            <Zap className="w-5 h-5 mr-2 group-hover:text-blue-600 transition-colors duration-300" />
             <span className="group-hover:tracking-wider transition-all duration-300">Start Your Journey</span>
           </button>
           <button 
@@ -68,7 +75,7 @@ const Hero = () => {
           </button>
         </div>
 
-        <div className="mt-16 animate-fade-in delay-1000">
+        <div className={`mt-16 transition-all duration-1000 ${isVisible ? 'animate-fade-in opacity-100' : 'opacity-0'}`}>
           <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto text-center">
             <div className="group cursor-pointer">
               <div className="text-3xl md:text-4xl font-black text-white mb-2 group-hover:scale-110 transition-transform duration-300">200+</div>

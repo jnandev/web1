@@ -13,8 +13,28 @@ export interface NewsletterData {
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
 
+// Health check function
+export const checkBackendHealth = async (): Promise<{ status: string; emailConfigured: boolean }> => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/health`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Backend health check failed:', error);
+    return { status: 'ERROR', emailConfigured: false };
+  }
+};
+
 export const submitContactForm = async (data: ContactFormData): Promise<{ success: boolean; message: string }> => {
   try {
+    // Check backend health first
+    const health = await checkBackendHealth();
+    if (health.status !== 'OK') {
+      throw new Error('Backend service unavailable');
+    }
+
     const response = await fetch(`${API_BASE_URL}/contact`, {
       method: 'POST',
       headers: {
@@ -39,6 +59,12 @@ export const submitContactForm = async (data: ContactFormData): Promise<{ succes
 
 export const subscribeToNewsletter = async (data: NewsletterData): Promise<{ success: boolean; message: string }> => {
   try {
+    // Check backend health first
+    const health = await checkBackendHealth();
+    if (health.status !== 'OK') {
+      throw new Error('Backend service unavailable');
+    }
+
     const response = await fetch(`${API_BASE_URL}/newsletter`, {
       method: 'POST',
       headers: {

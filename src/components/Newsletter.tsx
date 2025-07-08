@@ -1,11 +1,25 @@
 import React, { useState } from 'react';
-import { Mail, CheckCircle, AlertCircle } from 'lucide-react';
-import { subscribeToNewsletter } from '../api/contact';
+import { Mail, CheckCircle, AlertCircle, Loader } from 'lucide-react';
+import { subscribeToNewsletter, checkBackendHealth } from '../api/contact';
 
 const Newsletter = () => {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [message, setMessage] = useState('');
+  const [backendStatus, setBackendStatus] = useState<'checking' | 'online' | 'offline'>('checking');
+
+  // Check backend status on component mount
+  React.useEffect(() => {
+    const checkStatus = async () => {
+      try {
+        const health = await checkBackendHealth();
+        setBackendStatus(health.status === 'OK' ? 'online' : 'offline');
+      } catch (error) {
+        setBackendStatus('offline');
+      }
+    };
+    checkStatus();
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -69,9 +83,16 @@ const Newsletter = () => {
               <button
                 type="submit"
                 disabled={status === 'loading'}
-                className="bg-white text-black px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="bg-white text-black px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
               >
-                {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
+                {status === 'loading' ? (
+                  <>
+                    <Loader className="w-4 h-4 mr-2 animate-spin" />
+                    Subscribing...
+                  </>
+                ) : (
+                  'Subscribe'
+                )}
               </button>
             </div>
             
@@ -90,9 +111,27 @@ const Newsletter = () => {
             )}
           </form>
           
-          <p className="text-gray-400 text-sm mt-4">
+          <div className="mt-4 space-y-2">
+            <p className="text-gray-400 text-sm">
             Join 10,000+ marketers. No spam, unsubscribe at any time. We respect your privacy.
           </p>
+            
+            {/* Backend Status for Newsletter */}
+            <div className="flex items-center text-xs">
+              {backendStatus === 'online' && (
+                <>
+                  <div className="w-1.5 h-1.5 mr-2 bg-green-400 rounded-full"></div>
+                  <span className="text-green-400">Email service active</span>
+                </>
+              )}
+              {backendStatus === 'offline' && (
+                <>
+                  <div className="w-1.5 h-1.5 mr-2 bg-yellow-400 rounded-full"></div>
+                  <span className="text-yellow-400">Subscription will be processed when service is restored</span>
+                </>
+              )}
+            </div>
+          </div>
           
           <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-gray-400">
             <div>

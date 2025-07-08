@@ -1,5 +1,5 @@
 import React from 'react';
-import { Instagram, Twitter, Linkedin, Youtube, Mail, Phone, MapPin } from 'lucide-react';
+import { Instagram, Twitter, Linkedin, Youtube, Mail, Phone, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
@@ -34,17 +34,21 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               {[
-                { Icon: Instagram, href: "#" },
-                { Icon: Twitter, href: "#" },
-                { Icon: Linkedin, href: "#" },
-                { Icon: Youtube, href: "#" }
-              ].map(({ Icon, href }, index) => (
+                { Icon: Instagram, href: "https://instagram.com/underdogagency", label: "Instagram" },
+                { Icon: Twitter, href: "https://twitter.com/underdogagency", label: "Twitter" },
+                { Icon: Linkedin, href: "https://linkedin.com/company/underdogagency", label: "LinkedIn" },
+                { Icon: Youtube, href: "https://youtube.com/@underdogagency", label: "YouTube" }
+              ].map(({ Icon, href, label }, index) => (
                 <a
                   key={index}
                   href={href}
-                  className="w-10 h-10 bg-gray-700/50 backdrop-blur-sm border border-gray-600 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-110"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="group w-10 h-10 bg-gray-700/50 backdrop-blur-sm border border-gray-600 rounded-full flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-110 relative"
                 >
                   <Icon size={20} />
+                  <ExternalLink className="w-3 h-3 absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </a>
               ))}
             </div>
@@ -127,15 +131,15 @@ const Footer = () => {
               © 2025 Underdog Marketing Agency. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
-              <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors duration-300">
+              <Link to="/privacy" className="text-gray-400 hover:text-white text-sm transition-colors duration-300">
                 Privacy Policy
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors duration-300">
+              </Link>
+              <Link to="/terms" className="text-gray-400 hover:text-white text-sm transition-colors duration-300">
                 Terms of Service
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors duration-300">
+              </Link>
+              <Link to="/cookies" className="text-gray-400 hover:text-white text-sm transition-colors duration-300">
                 Cookie Policy
-              </a>
+              </Link>
             </div>
           </div>
         </div>

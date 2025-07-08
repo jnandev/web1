@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Store, Globe, Home, TrendingUp, Target, Smartphone, ArrowRight } from 'lucide-react';
+import { Store, Globe, Home, TrendingUp, Target, Smartphone, ArrowRight, CheckCircle } from 'lucide-react';
 
 const services = [
   {
@@ -65,8 +65,12 @@ const Services = () => {
             <Link
               key={index}
               to={service.path}
-              className="group bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 p-8 rounded-2xl hover:bg-gradient-to-br hover:from-gray-700 hover:to-gray-800 hover:border-gray-600 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl block"
+              className="group bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 p-8 rounded-2xl hover:bg-gradient-to-br hover:from-gray-700 hover:to-gray-800 hover:border-gray-600 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl block relative overflow-hidden"
             >
+              {/* Hover effect overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              <div className="relative z-10">
               <div className="text-white mb-6 transition-colors duration-500 group-hover:text-gray-100">
                 {service.icon}
               </div>
@@ -83,9 +87,9 @@ const Services = () => {
                 {service.features.map((feature, idx) => (
                   <li
                     key={idx}
-                    className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-500 flex items-center"
+                    className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-500 flex items-center transform group-hover:translate-x-1 transition-transform duration-300"
                   >
-                    <span className="w-1.5 h-1.5 bg-gray-500 group-hover:bg-gray-300 rounded-full mr-3 transition-colors duration-500"></span>
+                    <CheckCircle className="w-3 h-3 text-gray-500 group-hover:text-green-400 mr-3 transition-colors duration-500" />
                     {feature}
                   </li>
                 ))}
@@ -94,6 +98,7 @@ const Services = () => {
               <div className="flex items-center text-white group-hover:text-gray-100 transition-colors duration-500">
                 <span className="text-sm font-medium">Learn More</span>
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+              </div>
               </div>
             </Link>
           ))}

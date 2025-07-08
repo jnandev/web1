@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import { checkBackendHealth } from '../api/contact';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [backendOnline, setBackendOnline] = useState(true);
   const location = useLocation();
 
   useEffect(() => {
@@ -14,6 +16,22 @@ const Header = () => {
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Check backend status periodically
+  useEffect(() => {
+    const checkStatus = async () => {
+      try {
+        const health = await checkBackendHealth();
+        setBackendOnline(health.status === 'OK');
+      } catch (error) {
+        setBackendOnline(false);
+      }
+    };
+    
+    checkStatus();
+    const interval = setInterval(checkStatus, 30000); // Check every 30 seconds
+    return () => clearInterval(interval);
   }, []);
 
   const scrollToSection = (sectionId: string) => {
@@ -117,8 +135,15 @@ const Header = () => {
 
             <button
               onClick={() => scrollToSection('contact')}
-              className="bg-white text-black px-6 py-2 rounded-full font-semibold text-sm hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 whitespace-nowrap"
+              className={`px-6 py-2 rounded-full font-semibold text-sm transition-all duration-300 transform hover:scale-105 whitespace-nowrap relative ${
+                backendOnline 
+                  ? 'bg-white text-black hover:bg-gray-100' 
+                  : 'bg-yellow-500 text-black hover:bg-yellow-400'
+              }`}
             >
+              {!backendOnline && (
+                <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+              )}
               Get Started
             </button>
           </nav>
