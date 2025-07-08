@@ -72,10 +72,10 @@ const Header = () => {
             <span className="text-2xl font-bold text-white tracking-tight">UNDERDOG</span>
           </Link>
 
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-6">
             <button
               onClick={() => scrollToSection('beliefs')}
-              className="text-white/80 hover:text-white transition-colors duration-300 text-sm font-medium tracking-wide uppercase whitespace-nowrap"
+              className="text-white/80 hover:text-white transition-colors duration-300 text-xs font-medium tracking-wider uppercase whitespace-nowrap"
             >
               Beliefs
             </button>
@@ -85,7 +85,7 @@ const Header = () => {
               onMouseEnter={() => setIsServicesOpen(true)}
               onMouseLeave={() => setIsServicesOpen(false)}
             >
-              <button className="text-white/80 hover:text-white transition-colors duration-300 text-sm font-medium tracking-wide uppercase flex items-center space-x-1 group">
+              <button className="text-white/80 hover:text-white transition-colors duration-300 text-xs font-medium tracking-wider uppercase flex items-center space-x-1 group">
                 <span>Services</span>
                 <ChevronDown className={`w-4 h-4 transition-transform duration-300 group-hover:rotate-180 ${isServicesOpen ? 'rotate-180' : ''}`} />
               </button>
@@ -114,28 +114,28 @@ const Header = () => {
 
             <Link
               to="/pricing"
-              className="text-white/80 hover:text-white transition-colors duration-300 text-sm font-medium tracking-wide uppercase whitespace-nowrap"
+              className="text-white/80 hover:text-white transition-colors duration-300 text-xs font-medium tracking-wider uppercase whitespace-nowrap"
             >
               Pricing
             </Link>
 
             <Link
               to="/resources"
-              className="text-white/80 hover:text-white transition-colors duration-300 text-sm font-medium tracking-wide uppercase whitespace-nowrap"
+              className="text-white/80 hover:text-white transition-colors duration-300 text-xs font-medium tracking-wider uppercase whitespace-nowrap"
             >
               Resources
             </Link>
 
             <Link
               to="/about"
-              className="text-white/80 hover:text-white transition-colors duration-300 text-sm font-medium tracking-wide uppercase whitespace-nowrap"
+              className="text-white/80 hover:text-white transition-colors duration-300 text-xs font-medium tracking-wider uppercase whitespace-nowrap"
             >
               About
             </Link>
 
             <button
               onClick={() => scrollToSection('contact')}
-              className={`px-6 py-2 rounded-full font-semibold text-sm transition-all duration-300 transform hover:scale-105 whitespace-nowrap relative ${
+              className={`px-5 py-2 rounded-full font-semibold text-sm transition-all duration-300 transform hover:scale-105 whitespace-nowrap relative ${
                 backendOnline 
                   ? 'bg-white text-black hover:bg-gray-100' 
                   : 'bg-yellow-500 text-black hover:bg-yellow-400'

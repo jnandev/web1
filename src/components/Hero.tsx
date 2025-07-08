@@ -34,7 +34,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-black to-gray-800 pt-20 pb-16">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-black to-gray-800 pt-32 pb-20">
       {/* Animated Background */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1),transparent_50%)]"></div>
@@ -42,7 +42,7 @@ const Hero = () => {
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
-      <div ref={heroRef} className="relative z-10 text-center px-6 transition-transform duration-100 ease-out max-w-7xl mx-auto">
+      <div ref={heroRef} className="relative z-10 text-center px-6 transition-transform duration-100 ease-out max-w-7xl mx-auto mt-8">
         <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-white mb-6 tracking-tighter leading-none">
           <span className="block animate-slide-up">WE ARE</span>
           <span className="block animate-slide-up delay-200 bg-gradient-to-r from-white via-gray-300 to-white bg-clip-text text-transparent">
@@ -97,7 +97,7 @@ const Hero = () => {
 
       <button 
         onClick={() => scrollToSection('services')}
-        className="absolute bottom-12 left-1/2 transform -translate-x-1/2 animate-bounce hover:scale-110 transition-transform duration-300 p-2 rounded-full hover:bg-white/10"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce hover:scale-110 transition-transform duration-300 p-2 rounded-full hover:bg-white/10"
       >
         <ArrowDown className="text-white/60" size={32} />
       </button>
