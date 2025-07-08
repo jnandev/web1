@@ -5,16 +5,16 @@ const WhyChooseUs = () => {
   const reasons = [
     {
       icon: <Target className="w-12 h-12" />,
-      title: "Proven Track Record",
-      description: "500+ businesses transformed with measurable results",
-      highlight: "98% client satisfaction rate",
+      title: "Brand Storytelling Masters",
+      description: "We craft compelling narratives that connect your brand with the world",
+      highlight: "Stories that resonate globally",
       color: "from-blue-500 to-purple-500"
     },
     {
       icon: <Users className="w-12 h-12" />,
       title: "Industry Expertise",
       description: "Specialized knowledge across retail, e-commerce, and real estate",
-      highlight: "15+ years combined experience",
+      highlight: "Deep industry insights",
       color: "from-green-500 to-blue-500"
     },
     {

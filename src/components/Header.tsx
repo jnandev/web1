@@ -57,9 +57,9 @@ const Header = () => {
           <nav className="hidden md:flex items-center space-x-8">
             <button
               onClick={() => scrollToSection('beliefs')}
-              className="text-white/80 hover:text-white transition-colors duration-300 text-sm font-medium tracking-wide uppercase"
+              className="text-white/80 hover:text-white transition-colors duration-300 text-sm font-medium tracking-wide uppercase whitespace-nowrap"
             >
-              Our Beliefs
+              Beliefs
             </button>
             
             <div 
@@ -96,28 +96,28 @@ const Header = () => {
 
             <Link
               to="/pricing"
-              className="text-white/80 hover:text-white transition-colors duration-300 text-sm font-medium tracking-wide uppercase"
+              className="text-white/80 hover:text-white transition-colors duration-300 text-sm font-medium tracking-wide uppercase whitespace-nowrap"
             >
               Pricing
             </Link>
 
             <Link
               to="/resources"
-              className="text-white/80 hover:text-white transition-colors duration-300 text-sm font-medium tracking-wide uppercase"
+              className="text-white/80 hover:text-white transition-colors duration-300 text-sm font-medium tracking-wide uppercase whitespace-nowrap"
             >
               Resources
             </Link>
 
             <Link
               to="/about"
-              className="text-white/80 hover:text-white transition-colors duration-300 text-sm font-medium tracking-wide uppercase"
+              className="text-white/80 hover:text-white transition-colors duration-300 text-sm font-medium tracking-wide uppercase whitespace-nowrap"
             >
               About
             </Link>
 
             <button
               onClick={() => scrollToSection('contact')}
-              className="bg-white text-black px-6 py-2 rounded-full font-semibold text-sm hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
+              className="bg-white text-black px-6 py-2 rounded-full font-semibold text-sm hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 whitespace-nowrap"
             >
               Get Started
             </button>
@@ -141,7 +141,7 @@ const Header = () => {
             onClick={() => scrollToSection('beliefs')}
             className="block w-full text-left text-white/80 hover:text-white transition-colors duration-300 text-sm font-medium tracking-wide uppercase py-2"
           >
-            Our Beliefs
+            Beliefs
           </button>
           
           <div className="space-y-2">
