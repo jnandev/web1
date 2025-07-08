@@ -33,18 +33,11 @@ const Hero = () => {
       {/* Animated Background */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1),transparent_50%)]"></div>
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-white/5 to-transparent rounded-full"></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
       <div ref={heroRef} className="relative z-10 text-center px-6 transition-transform duration-100 ease-out">
-        <div className="mb-8 animate-fade-in">
-          <div className="w-32 h-32 mx-auto mb-6 bg-white/10 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300">
-            <span className="text-4xl font-black text-white">U</span>
-          </div>
-        </div>
-
         <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-white mb-6 tracking-tighter leading-none">
           <span className="block animate-slide-up">WE ARE</span>
           <span className="block animate-slide-up delay-200 bg-gradient-to-r from-white via-gray-300 to-white bg-clip-text text-transparent">
@@ -75,7 +68,7 @@ const Hero = () => {
           </button>
         </div>
 
-        <div className="mt-20 animate-fade-in delay-1000">
+        <div className="mt-16 animate-fade-in delay-1000">
           <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto text-center">
             <div className="group cursor-pointer">
               <div className="text-3xl md:text-4xl font-black text-white mb-2 group-hover:scale-110 transition-transform duration-300">200+</div>

@@ -1,63 +1,57 @@
-import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react';
+import React from 'react';
+import { Target, Users, Zap, Award, TrendingUp, Heart, CheckCircle, ArrowRight } from 'lucide-react';
 
-const testimonials = [
-  {
-    name: "Priya Sharma",
-    role: "Retail Store Owner",
-    company: "Bloom Boutique",
-    image: "https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=400",
-    content: "Underdog transformed our struggling boutique into the most popular store in our district. Our foot traffic increased 400% and sales are through the roof!",
-    rating: 5,
-    results: "400% increase in foot traffic"
-  },
-  {
-    name: "Arjun Patel",
-    role: "E-commerce Founder",
-    company: "TechGear Pro",
-    image: "https://images.pexels.com/photos/3184317/pexels-photo-3184317.jpeg?auto=compress&cs=tinysrgb&w=400",
-    content: "From zero to 15,000 orders per month in just 18 months. Their e-commerce strategy and execution is absolutely phenomenal. Best investment we ever made.",
-    rating: 5,
-    results: "15K monthly orders in 18 months"
-  },
-  {
-    name: "Kavya Reddy",
-    role: "Real Estate Agent",
-    company: "Premium Properties",
-    image: "https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=400",
-    content: "My listings now sell 75% faster than the market average. Their marketing strategies have made me the top agent in my area. Incredible results!",
-    rating: 5,
-    results: "75% faster sales"
-  },
-  {
-    name: "Rohit Gupta",
-    role: "Restaurant Owner",
-    company: "Urban Eats",
-    image: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=400",
-    content: "Our restaurant went from struggling to fully booked every night. Their local marketing and social media strategy brought our community together.",
-    rating: 5,
-    results: "Fully booked every night"
-  },
-  {
-    name: "Sneha Joshi",
-    role: "Fitness Studio Owner",
-    company: "FitLife Studio",
-    image: "https://images.pexels.com/photos/3184639/pexels-photo-3184639.jpeg?auto=compress&cs=tinysrgb&w=400",
-    content: "Membership grew from 50 to 500 in 8 months. Their brand development and digital marketing turned us into the premier fitness destination in town.",
-    rating: 5,
-    results: "10x membership growth"
-  }
-];
+const WhyChooseUs = () => {
+  const reasons = [
+    {
+      icon: <Target className="w-12 h-12" />,
+      title: "Proven Track Record",
+      description: "500+ businesses transformed with measurable results",
+      highlight: "98% client satisfaction rate",
+      color: "from-blue-500 to-purple-500"
+    },
+    {
+      icon: <Users className="w-12 h-12" />,
+      title: "Industry Expertise",
+      description: "Specialized knowledge across retail, e-commerce, and real estate",
+      highlight: "15+ years combined experience",
+      color: "from-green-500 to-blue-500"
+    },
+    {
+      icon: <Zap className="w-12 h-12" />,
+      title: "Innovation First",
+      description: "Cutting-edge strategies that keep you ahead of competitors",
+      highlight: "Early adopters of new trends",
+      color: "from-yellow-500 to-orange-500"
+    },
+    {
+      icon: <Award className="w-12 h-12" />,
+      title: "Results Guaranteed",
+      description: "We don't just promise results, we guarantee them",
+      highlight: "90-day success guarantee",
+      color: "from-purple-500 to-pink-500"
+    },
+    {
+      icon: <TrendingUp className="w-12 h-12" />,
+      title: "Scalable Solutions",
+      description: "Strategies that grow with your business from startup to enterprise",
+      highlight: "Average 340% growth achieved",
+      color: "from-red-500 to-orange-500"
+    },
+    {
+      icon: <Heart className="w-12 h-12" />,
+      title: "Personal Touch",
+      description: "Dedicated support and genuine care for your success",
+      highlight: "24/7 priority support",
+      color: "from-pink-500 to-red-500"
+    }
+  ];
 
-const Testimonials = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const nextTestimonial = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-  };
-
-  const prevTestimonial = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  const scrollToContact = () => {
+    const element = document.getElementById('contact');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
@@ -65,102 +59,119 @@ const Testimonials = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-20">
           <h2 className="text-5xl md:text-6xl font-black text-white mb-6 tracking-tight">
-            WHY CHOOSE US?
+            WHY CHOOSE UNDERDOG?
           </h2>
           <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            Discover what makes Underdog the perfect partner for your business transformation and growth.
+            We're not just another marketing agency. We're your partners in transformation, 
+            committed to turning your business into a market leader.
           </p>
         </div>
 
-        {/* Featured Testimonial */}
-        <div className="relative mb-16">
-          <div className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 rounded-3xl p-12 text-center">
-            <Quote className="w-16 h-16 text-gray-400 mx-auto mb-8" />
-            
-            <div className="flex justify-center mb-6">
-              {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
-                <Star key={i} className="w-6 h-6 text-yellow-400 fill-current" />
-              ))}
-            </div>
-            
-            <blockquote className="text-2xl md:text-3xl text-white font-medium mb-8 leading-relaxed max-w-4xl mx-auto">
-              "{testimonials[currentIndex].content}"
-            </blockquote>
-            
-            <div className="flex items-center justify-center space-x-6">
-              <img
-                src={testimonials[currentIndex].image}
-                alt={testimonials[currentIndex].name}
-                className="w-16 h-16 rounded-full object-cover"
-              />
-              <div className="text-left">
-                <div className="text-xl font-bold text-white">{testimonials[currentIndex].name}</div>
-                <div className="text-gray-300">{testimonials[currentIndex].role}</div>
-                <div className="text-gray-400 text-sm">{testimonials[currentIndex].company}</div>
-              </div>
-            </div>
-            
-            <div className="mt-6 inline-block bg-gray-700/50 px-6 py-2 rounded-full">
-              <span className="text-white font-semibold">{testimonials[currentIndex].results}</span>
-            </div>
-          </div>
-
-          {/* Navigation */}
-          <button
-            onClick={prevTestimonial}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-800/80 hover:bg-gray-700 text-white p-3 rounded-full transition-all duration-300"
-          >
-            <ChevronLeft size={24} />
-          </button>
-          <button
-            onClick={nextTestimonial}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-800/80 hover:bg-gray-700 text-white p-3 rounded-full transition-all duration-300"
-          >
-            <ChevronRight size={24} />
-          </button>
-        </div>
-
-        {/* Testimonial Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
+        {/* Main Reasons Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+          {reasons.map((reason, index) => (
             <div
               key={index}
-              className={`bg-gray-800/50 border border-gray-700 rounded-2xl p-6 cursor-pointer transition-all duration-300 ${
-                index === currentIndex ? 'ring-2 ring-white' : 'hover:bg-gray-700/50'
-              }`}
-              onClick={() => setCurrentIndex(index)}
+              className="group bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-3xl p-8 hover:bg-gradient-to-br hover:from-gray-700 hover:to-gray-800 hover:border-gray-600 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl"
             >
-              <div className="flex items-center space-x-4 mb-4">
-                <img
-                  src={testimonial.image}
-                  alt={testimonial.name}
-                  className="w-12 h-12 rounded-full object-cover"
-                />
-                <div>
-                  <div className="text-white font-semibold">{testimonial.name}</div>
-                  <div className="text-gray-400 text-sm">{testimonial.company}</div>
+              <div className={`w-16 h-16 bg-gradient-to-r ${reason.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                <div className="text-white">
+                  {reason.icon}
                 </div>
               </div>
               
-              <div className="flex mb-3">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
-                ))}
-              </div>
+              <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-gray-100 transition-colors duration-300">
+                {reason.title}
+              </h3>
               
-              <p className="text-gray-300 text-sm leading-relaxed mb-3">
-                "{testimonial.content.substring(0, 120)}..."
+              <p className="text-gray-300 group-hover:text-gray-200 mb-4 leading-relaxed transition-colors duration-300">
+                {reason.description}
               </p>
               
-              <div className="text-white font-semibold text-sm">
-                {testimonial.results}
+              <div className={`inline-block bg-gradient-to-r ${reason.color} bg-clip-text text-transparent font-bold text-sm`}>
+                {reason.highlight}
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Unique Value Propositions */}
+        <div className="bg-gradient-to-r from-gray-800 to-gray-900 border border-gray-700 rounded-3xl p-12 mb-20">
+          <h3 className="text-3xl md:text-4xl font-bold text-white mb-12 text-center">
+            The Underdog Difference
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div className="space-y-6">
+              <div className="flex items-start space-x-4">
+                <CheckCircle className="w-6 h-6 text-green-400 mt-1 flex-shrink-0" />
+                <div>
+                  <h4 className="text-lg font-bold text-white mb-2">No Cookie-Cutter Solutions</h4>
+                  <p className="text-gray-300">Every strategy is custom-built for your specific business, industry, and goals.</p>
+                </div>
+              </div>
+              <div className="flex items-start space-x-4">
+                <CheckCircle className="w-6 h-6 text-green-400 mt-1 flex-shrink-0" />
+                <div>
+                  <h4 className="text-lg font-bold text-white mb-2">Transparent Reporting</h4>
+                  <p className="text-gray-300">Real-time access to all metrics and performance data. No black boxes.</p>
+                </div>
+              </div>
+              <div className="flex items-start space-x-4">
+                <CheckCircle className="w-6 h-6 text-green-400 mt-1 flex-shrink-0" />
+                <div>
+                  <h4 className="text-lg font-bold text-white mb-2">Rapid Implementation</h4>
+                  <p className="text-gray-300">See results within 30 days, not months. We move fast and execute flawlessly.</p>
+                </div>
+              </div>
+            </div>
+            <div className="space-y-6">
+              <div className="flex items-start space-x-4">
+                <CheckCircle className="w-6 h-6 text-green-400 mt-1 flex-shrink-0" />
+                <div>
+                  <h4 className="text-lg font-bold text-white mb-2">Multi-Channel Mastery</h4>
+                  <p className="text-gray-300">Expertise across all marketing channels, from traditional to cutting-edge digital.</p>
+                </div>
+              </div>
+              <div className="flex items-start space-x-4">
+                <CheckCircle className="w-6 h-6 text-green-400 mt-1 flex-shrink-0" />
+                <div>
+                  <h4 className="text-lg font-bold text-white mb-2">Continuous Optimization</h4>
+                  <p className="text-gray-300">We never stop improving. Your campaigns get better every month.</p>
+                </div>
+              </div>
+              <div className="flex items-start space-x-4">
+                <CheckCircle className="w-6 h-6 text-green-400 mt-1 flex-shrink-0" />
+                <div>
+                  <h4 className="text-lg font-bold text-white mb-2">Success Partnership</h4>
+                  <p className="text-gray-300">Your success is our success. We're invested in your long-term growth.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Call to Action */}
+        <div className="text-center">
+          <div className="bg-gradient-to-r from-gray-900 to-black border border-gray-700 rounded-3xl p-12">
+            <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              Ready to Experience the Difference?
+            </h3>
+            <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+              Join hundreds of businesses that chose Underdog and never looked back. 
+              Let's write your success story together.
+            </p>
+            <button
+              onClick={scrollToContact}
+              className="group bg-white text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 flex items-center justify-center mx-auto"
+            >
+              <span className="group-hover:tracking-wider transition-all duration-300">Start Your Transformation</span>
+              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+            </button>
+          </div>
         </div>
       </div>
     </section>
   );
 };
 
-export default Testimonials;
+export default WhyChooseUs;
